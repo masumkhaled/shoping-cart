@@ -12,9 +12,10 @@ function updateProductNumber(product, productPrice, isIncreasing){
 
     // Calculate Total 
     calculatePrice();
+    calculateTotal();
 }
 
-// Update Sub-total and Total price 
+// Update Sub-total 
 function calculatePrice(){
     const iphonePriceText = document.getElementById('iphoneProductPrice').innerText;
     const iphonePrice = parseInt(iphonePriceText);
@@ -26,6 +27,17 @@ function calculatePrice(){
     const subTotal = iphonePrice + casePrice;
     subTotalId.innerText = subTotal;
 
+}
+
+// Calculate tax and Update total 
+function calculateTotal(){
+    const subTotalText = document.getElementById('sub-total').innerText;
+    const subTotal = parseInt(subTotalText);
+    const taxId = document.getElementById('tax-total');
+    const taxTotal = subTotal * 10 / 100;
+    taxId.innerText = taxTotal;
+    // update total 
+    document.getElementById('price-total').innerText = subTotal + taxTotal;
 }
 
 // Get And Update Phone Price 
